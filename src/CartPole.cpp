@@ -50,5 +50,16 @@ CartPoleEnv::StepResult CartPoleEnv::updateState(int action)
     currentState.x += currentState.x_dot * dt;
     currentState.theta += currentState.theta_dot * dt;
 
+    double cartX = currentState.x * Config::Constants::pixelsPerMeter;
+
+    double cartLeftBoundary = cartX - (Config::Dimensions::cartWidth / 2);
+    double cartRightBoundary = cartX + (Config::Dimensions::cartWidth / 2);
+
+    if (cartLeftBoundary <= 0 || cartRightBoundary >= Config::Dimensions::winWidth)
+    {
+        reset();
+        return {0, 0, 0, 0};
+    }
+
     return {NULL, NULL, NULL};
 }
