@@ -25,7 +25,7 @@ namespace Config
     }
     namespace InitialState
     {
-        const float x = Dimensions::winWidth / 2;
+        const float x = (Dimensions::winWidth / 2) / Constants::pixelsPerMeter;
 
         // theta from positive vertial y axis
         const float theta = 0.2;

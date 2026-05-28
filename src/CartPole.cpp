@@ -6,7 +6,7 @@
 
 CartPoleEnv::CartPoleEnv()
 {
-    currentState.x = 0;
+    currentState.x = Config::InitialState::x;
     currentState.x_dot = 0;
     currentState.theta = Config::InitialState::theta;
     currentState.theta_dot = 0;

@@ -46,7 +46,7 @@ bool SFMLRenderer::isOpen()
 void SFMLRenderer::renderCurrentState(double position, double theta)
 {
     float thetaEnv = static_cast<float>(theta) - (std::numbers::pi / 2);
-    float xEnv = (Config::Dimensions::winWidth / 2) + static_cast<float>(position * Config::Constants::pixelsPerMeter);
+    float xEnv = static_cast<float>(position * Config::Constants::pixelsPerMeter);
 
     cart.setPosition({xEnv, Config::Dimensions::winHeight / 2});
     pendulum.setPosition({xEnv, Config::Dimensions::winHeight / 2});
