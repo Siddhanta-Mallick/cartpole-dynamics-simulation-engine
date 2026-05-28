@@ -21,6 +21,7 @@ public:
     };
 
     CartPoleEnv();
+    void reset();
     StepResult updateState(int action);
     State getCurrentState() const;
 

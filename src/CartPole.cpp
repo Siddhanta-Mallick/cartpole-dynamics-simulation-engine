@@ -17,6 +17,14 @@ State CartPoleEnv::getCurrentState() const
     return {currentState.x, currentState.x_dot, currentState.theta, currentState.theta_dot};
 }
 
+void CartPoleEnv::reset()
+{
+    currentState.x = Config::InitialState::x;
+    currentState.x_dot = 0;
+    currentState.theta = Config::InitialState::theta;
+    currentState.theta_dot = 0;
+}
+
 CartPoleEnv::StepResult CartPoleEnv::updateState(int action)
 {
     // action 0 - left, action 1 - right, else do noting force is zero
