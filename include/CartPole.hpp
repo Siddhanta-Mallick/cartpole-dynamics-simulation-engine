@@ -29,7 +29,7 @@ private:
     State currentState;
     const double M = Config::Constants::M;
     const double m = Config::Constants::m;
-    const double l = Config::Constants::l;
+    const double l = Config::Constants::l_M;
     const double g = Config::Constants::g;
     const double dt = Config::Constants::dt;
     const double F = Config::Constants::F;

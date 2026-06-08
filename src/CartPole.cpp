@@ -6,7 +6,7 @@
 
 CartPoleEnv::CartPoleEnv()
 {
-    currentState.x = Config::InitialState::x;
+    currentState.x = Config::InitialState::x_M;
     currentState.x_dot = 0;
     currentState.theta = Config::InitialState::theta;
     currentState.theta_dot = 0;
@@ -19,7 +19,7 @@ State CartPoleEnv::getCurrentState() const
 
 void CartPoleEnv::reset()
 {
-    currentState.x = Config::InitialState::x;
+    currentState.x = Config::InitialState::x_M;
     currentState.x_dot = 0;
     currentState.theta = Config::InitialState::theta;
     currentState.theta_dot = 0;
@@ -50,12 +50,7 @@ CartPoleEnv::StepResult CartPoleEnv::updateState(int action)
     currentState.x += currentState.x_dot * dt;
     currentState.theta += currentState.theta_dot * dt;
 
-    double cartX = currentState.x * Config::Constants::pixelsPerMeter;
-
-    double cartLeftBoundary = cartX - (Config::Dimensions::cartWidth / 2);
-    double cartRightBoundary = cartX + (Config::Dimensions::cartWidth / 2);
-
-    if (cartLeftBoundary <= 0 || cartRightBoundary >= Config::Dimensions::winWidth)
+    if (!(Config::RLLimits::limitLeft_M <= currentState.x and currentState.x <= Config::RLLimits::limitRight_M))
     {
         reset();
         return {0, 0, 0, 0};

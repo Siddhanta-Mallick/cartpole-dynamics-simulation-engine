@@ -7,7 +7,7 @@
 class SFMLRenderer
 {
 public:
-    SFMLRenderer(unsigned int width = Config::Dimensions::winWidth, unsigned int height = Config::Dimensions::winHeight);
+    SFMLRenderer(unsigned int width = Config::Dimensions::winWidth_P, unsigned int height = Config::Dimensions::winHeight_P);
     void createWindow();
     void closeWindow();
     void pollEvents(); // to check and close window upon clicking the exit button

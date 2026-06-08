@@ -8,13 +8,13 @@ SFMLRenderer::SFMLRenderer(unsigned int width, unsigned int height) : width(widt
 {
     window = nullptr;
 
-    cart = sf::RectangleShape({Config::Dimensions::cartWidth, Config::Dimensions::cartHeight});
-    cart.setOrigin({Config::Dimensions::cartWidth / 2, Config::Dimensions::cartHeight / 2});
-    cart.setPosition({Config::InitialState::x, Config::Dimensions::winHeight / 2});
+    cart = sf::RectangleShape({Config::Dimensions::cartWidth_P, Config::Dimensions::cartHeight_P});
+    cart.setOrigin({Config::Dimensions::cartWidth_P / 2, Config::Dimensions::cartHeight_P / 2});
+    cart.setPosition({Config::InitialState::x_P, Config::Dimensions::winHeight_P / 2});
 
-    pendulum = sf::RectangleShape({Config::Dimensions::pendulumLength * Config::Constants::pixelsPerMeter, Config::Dimensions::pendulumWidth});
-    pendulum.setOrigin({0, Config::Dimensions::pendulumWidth / 2});
-    pendulum.setPosition({Config::InitialState::x, Config::Dimensions::winHeight / 2});
+    pendulum = sf::RectangleShape({Config::Dimensions::pendulumLength_P * Config::Constants::pixelsPerMeter, Config::Dimensions::pendulumWidth_P});
+    pendulum.setOrigin({0, Config::Dimensions::pendulumWidth_P / 2});
+    pendulum.setPosition({Config::InitialState::x_P, Config::Dimensions::winHeight_P / 2});
     pendulum.setRotation(sf::radians(Config::InitialState::theta - (std::numbers::pi / 2)));
 
     pendulum.setFillColor(sf::Color::Red);
@@ -48,8 +48,8 @@ void SFMLRenderer::renderCurrentState(double position, double theta)
     float thetaEnv = static_cast<float>(theta) - (std::numbers::pi / 2);
     float xEnv = static_cast<float>(position * Config::Constants::pixelsPerMeter);
 
-    cart.setPosition({xEnv, Config::Dimensions::winHeight / 2});
-    pendulum.setPosition({xEnv, Config::Dimensions::winHeight / 2});
+    cart.setPosition({xEnv, Config::Dimensions::winHeight_P / 2});
+    pendulum.setPosition({xEnv, Config::Dimensions::winHeight_P / 2});
     pendulum.setRotation(sf::radians(thetaEnv));
 
     window->clear(sf::Color::Black);
